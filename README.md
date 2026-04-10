@@ -1,87 +1,108 @@
-## 🧠 AI-Powered Patent Analyzer (Prior Art Discovery using RAG)
+## 🧠 AI-Based Invention vs Prior Art Similarity & Coverage Analyzer
 
 ### 📌 Overview
 
-The **AI-Powered Patent Analyzer** is an intelligent system designed to assist in **prior art search and patentability analysis** using modern **Large Language Models (LLMs)** and **Retrieval-Augmented Generation (RAG)** techniques. The system takes as input the **key features or elements of an invention** and generates a **comprehensive reference report** that evaluates the novelty of the invention against existing literature.
+This project is an **AI-assisted analysis tool** designed to evaluate how well a given **prior art document (patent or research paper)** covers the **key features of an invention**. Instead of performing full patentability analysis or automatically discovering prior art, the system focuses on a **more controlled and reliable task**: measuring **semantic similarity and feature-level coverage** between two inputs.
 
-The primary objective of this project is to automate and enhance the traditionally manual and time-consuming process of patent analysis by combining **semantic search, structured reasoning, and explainable AI**.
+The goal is to provide a **transparent, explainable, and measurable comparison** that helps users understand:
+
+* Which parts of an invention are already disclosed
+* Which features are missing
+* How strong the overlap is between the invention and the prior art
 
 ---
 
 ### ⚙️ Key Functionalities
 
-* **Invention Understanding Module**
-  The system first interprets the input features and generates a clear, structured summary of the invention. This allows users to verify whether the AI has correctly understood the concept before proceeding with analysis.
+* **Feature Extraction from Invention**
+  The system processes the input invention and breaks it down into **individual features or elements** for structured comparison.
 
-* **Prior Art Retrieval (RAG-Based Search)**
-  Using embedding-based semantic search over patent and non-patent literature, the system retrieves relevant references that are conceptually similar to the input invention.
+* **Semantic Similarity Analysis**
+  Using embedding-based techniques, the system computes:
 
-* **Primary Reference Identification**
-  The model identifies **two major references** that either individually or in combination can **knock out the invention**. Each reference is supported with detailed reasoning and element-wise mapping.
+  * Overall similarity between invention and prior art
+  * Feature-level similarity scores
 
-* **Explainable Reasoning Engine**
-  For each selected reference, the system provides:
+* **Feature-wise Coverage Mapping (Core Component)**
+  Each invention feature is mapped against the prior art and classified as:
 
-  * Element-wise correspondence between invention features and prior art
-  * Justification of relevance
-  * Explanation of whether the reference fully or partially discloses the invention
+  * **Covered** (strong match)
+  * **Partially Covered** (moderate match)
+  * **Not Covered** (weak or no match)
 
-* **Additional Reference Categorization**
-  The system further provides **3 to 10 additional references**, intelligently categorized based on their relevance:
+* **Coverage Score Calculation**
+  A quantitative metric representing how much of the invention is disclosed:
 
-  * High Overlap (strong similarity)
-  * Partial Overlap (covers some features)
-  * Complementary (fills missing elements)
-  * Background Art (domain-level similarity)
+  ```
+  Coverage (%) = (Number of matched features / Total features) × 100
+  ```
 
-* **Structured Report Generation**
-  The final output is a well-organized report that includes:
+* **Missing Feature Identification**
+  Clearly highlights which elements of the invention are **not present** in the prior art.
 
-  * AI-generated understanding of the invention
-  * Primary knockout references with reasoning
-  * Additional categorized references
-  * Clear conclusions on patentability
+* **Explainable Output (LLM-Assisted)**
+  Generates concise explanations based strictly on similarity results, ensuring **minimal hallucination** and improved interpretability.
+
+---
+
+### 📄 Output Structure
+
+The system generates a structured report containing:
+
+* **Overall Similarity Score**
+* **Coverage Percentage**
+* **Feature-wise Mapping Table**
+* **List of Missing Features**
+* **Short Explanation of Overlap and Gaps**
 
 ---
 
 ### 🚀 Motivation
 
-Patent analysis requires deep technical understanding and extensive search across large datasets. This project aims to:
+Traditional patent analysis is **time-consuming and highly manual**, requiring detailed comparison of technical features across documents. This project aims to:
 
-* Reduce manual effort in prior art search
-* Improve accuracy using semantic retrieval
-* Provide transparent and explainable results
-* Bridge the gap between domain expertise and AI capabilities
+* Assist in **faster preliminary analysis**
+* Provide **data-driven similarity insights**
+* Enable **feature-level transparency** in comparisons
+* Serve as a supporting tool for researchers, analysts, and students
 
 ---
 
-### 🛠️ Tech Stack (Proposed)
+### 🛠️ Tech Stack
 
-* **Backend:** Python, FastAPI
-* **LLM Integration:** OpenAI / Groq / Local Models
-* **RAG Framework:** LlamaIndex / LangChain
-* **Vector Database:** FAISS / ChromaDB
-* **Data Sources:** Patent databases (e.g., Google Patents, USPTO)
-* **Frontend (Optional):** Streamlit / React
+* **Language:** Python
+* **Embeddings:** Sentence Transformers
+* **Vector Search (Optional):** FAISS
+* **LLM (for explanation):** OpenAI / Groq / similar APIs
+* **Frontend (Optional):** Streamlit
+
+---
+
+### ⚠️ Limitations
+
+* This system **does NOT perform legal patentability analysis**
+* It **does NOT automatically determine novelty or inventive step**
+* Results are based on **semantic similarity**, not legal standards
+* Intended for **assistance and exploration**, not final decision-making
 
 ---
 
 ### 💡 Key Highlights
 
-* Combines **domain-specific patent analysis** with **cutting-edge AI techniques**
-* Implements **retrieval + reasoning pipeline** for real-world problem solving
-* Focuses on **explainability**, making outputs reliable and user-verifiable
-* Designed as a scalable system adaptable to multiple technical domains
+* Focuses on a **well-defined, solvable problem**
+* Emphasizes **explainability over black-box AI**
+* Avoids unreliable “AI guessing” by grounding outputs in similarity scores
+* Designed to be **practical, testable, and interview-ready**
 
 ---
 
 ### 🎯 Use Cases
 
-* Patentability search and analysis
-* Prior art discovery for research and innovation
-* Legal-tech and IP analytics platforms
-* AI-assisted research workflows
+* Preliminary prior art comparison
+* Research and academic analysis
+* Learning tool for patent feature mapping
+* AI-assisted document comparison workflows
 
 ---
 
-This project demonstrates how **AI can be leveraged to transform complex knowledge-intensive tasks** into efficient, scalable, and intelligent systems.
+This project demonstrates how **AI can be applied in a controlled and reliable way** to support complex technical analysis tasks without overclaiming capabilities.
